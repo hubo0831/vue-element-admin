@@ -1,0 +1,15 @@
+[{
+        context: 'D:\\GithubProjects\\技术栈\\前端框架\\vue-element-admin-hb',
+        manifest: {
+            name: 'vuedll_library',
+            content: [Object]
+        }
+    },
+    {
+        context: 'D:\\GithubProjects\\技术栈\\前端框架\\vue-element-admin-hb',
+        manifest: {
+            name: 'elementui_library',
+            content: [Object]
+        }
+    }
+]

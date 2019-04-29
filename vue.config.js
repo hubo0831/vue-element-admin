@@ -27,11 +27,13 @@ module.exports = {
         dll: {
             entry: {
                 vuedll: ['vue', 'vuex', 'vue-router', 'axios'],
-                elementdll: ['element-ui']
+                elementdll: ['element-ui'],
+                exceldll: ['xlsx', 'tui-editor', 'echarts'],
+                othersdll: ['codemirror', 'jquery', 'pako']
             },
             output: path.resolve(__dirname, './public-dll'),
             cacheFilePath: path.resolve(__dirname, './public-dll'),
-            open: "auto",
+            open: true,
             inject: true
         }
     },

@@ -26,6 +26,11 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
+          <router-link to="/profile/index">
+            <el-dropdown-item>
+              {{ $t('navbar.profile') }}
+            </el-dropdown-item>
+          </router-link>
           <router-link to="/">
             <el-dropdown-item>
               {{ $t('navbar.dashboard') }}
@@ -35,6 +40,9 @@
             <el-dropdown-item>
               {{ $t('navbar.github') }}
             </el-dropdown-item>
+          </a>
+          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
+            <el-dropdown-item>Docs</el-dropdown-item>
           </a>
           <el-dropdown-item divided>
             <span style="display:block;" @click="logout">{{ $t('navbar.logOut') }}</span>
@@ -68,7 +76,6 @@ export default {
   computed: {
     ...mapGetters([
       'sidebar',
-      'name',
       'avatar',
       'device'
     ])

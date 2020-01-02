@@ -62,14 +62,16 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: 'I18n',
     externalLink: 'Enlace externo',
-    donate: 'Donate'
+    donate: 'Donate',
+    profile: 'Profile'
   },
   navbar: {
     logOut: 'Salir',
     dashboard: 'Panel de control',
     github: 'Github',
     theme: 'Tema',
-    size: 'Tamaño global'
+    size: 'Tamaño global',
+    profile: 'Profile'
   },
   login: {
     title: 'Formulario de acceso',
@@ -132,6 +134,9 @@ export default {
     delete: 'Eliminar',
     cancel: 'Cancelar',
     confirm: 'Confirmar'
+  },
+  example: {
+    warning: 'Creating and editing pages cannot be cached by keep-alive because keep-alive include does not currently support caching based on routes, so it is currently cached based on component name. If you want to achieve a similar caching effect, you can use a browser caching scheme such as localStorage. Or do not use keep-alive include to cache all pages directly. See details'
   },
   errorLog: {
     tips: 'Please click the bug icon in the upper right corner',

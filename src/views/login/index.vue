@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
+    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
         <h3 class="title">
@@ -19,7 +19,8 @@
           :placeholder="$t('login.username')"
           name="username"
           type="text"
-          auto-complete="on"
+          tabindex="1"
+          autocomplete="on"
         />
       </el-form-item>
 
@@ -35,7 +36,8 @@
             :type="passwordType"
             :placeholder="$t('login.password')"
             name="password"
-            auto-complete="on"
+            tabindex="2"
+            autocomplete="on"
             @keyup.native="checkCapslock"
             @blur="capsTooltip = false"
             @keyup.enter.native="handleLogin"
@@ -81,7 +83,7 @@
 <script>
 import { validUsername } from '@/utils/validate'
 import LangSelect from '@/components/LangSelect'
-import SocialSign from './socialSignin'
+import SocialSign from './components/SocialSignin'
 
 export default {
   name: 'Login',
@@ -114,13 +116,18 @@ export default {
       capsTooltip: false,
       loading: false,
       showDialog: false,
-      redirect: undefined
+      redirect: undefined,
+      otherQuery: {}
     }
   },
   watch: {
     $route: {
       handler: function(route) {
-        this.redirect = route.query && route.query.redirect
+        const query = route.query
+        if (query) {
+          this.redirect = query.redirect
+          this.otherQuery = this.getOtherQuery(query)
+        }
       },
       immediate: true
     }
@@ -167,7 +174,7 @@ export default {
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm)
             .then(() => {
-              this.$router.push({ path: this.redirect || '/' })
+              this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
               this.loading = false
             })
             .catch(() => {
@@ -178,6 +185,14 @@ export default {
           return false
         }
       })
+    },
+    getOtherQuery(query) {
+      return Object.keys(query).reduce((acc, cur) => {
+        if (cur !== 'redirect') {
+          acc[cur] = query[cur]
+        }
+        return acc
+      }, {})
     }
     // afterQRScan() {
     //   if (e.key === 'x-admin-oauth-code') {
